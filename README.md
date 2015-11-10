@@ -1,4 +1,4 @@
-# Fusepool P3 Various Services Docker Core
+# Fusepool P3 Various Services Docker Core [![Build Status](https://travis-ci.org/fusepoolP3/p3-various-services.svg)](https://travis-ci.org/fusepoolP3/p3-various-services)
 
 This image is typically used with [P3 Platform Reference Implementation](https://github.com/fusepoolP3/p3-platform-reference-implementation)
 docker compose. It provides those services that are not (yet) available as
