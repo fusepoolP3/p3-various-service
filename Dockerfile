@@ -6,11 +6,12 @@ EXPOSE 8181 8151 8200 8201 8202 8203 8204 8205 8300 8301 8302 8303 8304 8305 830
 
 
 RUN apt-get update && \
-    apt-get install -y apt-transport-https ca-certificates curl git  httpry && \
+    apt-get install -y apt-transport-https ca-certificates curl git httpry build-essential && \
     echo 'deb http://packages.elasticsearch.org/logstashforwarder/debian stable main' > /etc/apt/sources.list.d/logstashforwarder.list && \
     curl http://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add - && \
+    curl --silent --location https://deb.nodesource.com/setup_4.x | bash - && \
     apt-get update && \
-    apt-get install -y logstash-forwarder nodejs-legacy npm && \
+    apt-get install -y logstash-forwarder nodejs && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
@@ -33,7 +34,7 @@ RUN cd /usr/local/lib/ && \
     curl -Ls $(curl -s https://api.github.com/repos/fusepoolP3/p3-geocoordinates-transformer/releases | grep browser_download_url | head -n 1 | cut -d '"' -f 4) > p3-geocoordinates-transformer.jar && \
     curl -Ls $(curl -s https://api.github.com/repos/fusepoolP3/p3-dashboard/releases | grep browser_download_url | head -n 1 | cut -d '"' -f 4) > p3-dashboard.jar && \
     curl -Ls $(curl -s https://api.github.com/repos/fusepoolP3/p3-pipeline-gui/releases | grep browser_download_url | head -n 1 | cut -d '"' -f 4) > p3-pipeline-gui.jar && \
-    curl -Ls $(curl -s https://api.github.com/repos/fusepoolP3/p3-resource-gui/releases | grep browser_download_url | head -n 1 | cut -d '"' -f 4) > p3-resource-gui.jar 
+    curl -Ls $(curl -s https://api.github.com/repos/fusepoolP3/p3-resource-gui/releases | grep browser_download_url | head -n 1 | cut -d '"' -f 4) > p3-resource-gui.jar
 
 
 # Setup user & environment
@@ -49,10 +50,9 @@ WORKDIR /home/p3
 ADD rsyslog.conf /etc/rsyslog.d/50-default.conf
 
 # Install and configure logio
-# temporarily commented out
-# RUN npm install -g log.io --user "p3"
-# RUN echo "exports.config = {host:'0.0.0.0',port:8388}" > .log.io/web_server.conf
-# ADD harvester.conf /home/p3/.log.io/harvester.conf
+RUN npm install -g --user "p3" log.io
+RUN echo "exports.config = {host:'0.0.0.0',port:8388}" > /home/p3/.log.io/web_server.conf
+ADD harvester.conf /home/p3/.log.io/harvester.conf
 
 # Setup & run startup-script
 ADD startup.sh /usr/local/bin/startup.sh
