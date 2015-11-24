@@ -49,9 +49,10 @@ WORKDIR /home/p3
 ADD rsyslog.conf /etc/rsyslog.d/50-default.conf
 
 # Install and configure logio
-RUN npm install -g log.io --user "p3"
-RUN echo "exports.config = {host:'0.0.0.0',port:8388}" > .log.io/web_server.conf
-ADD harvester.conf /home/p3/.log.io/harvester.conf
+# temporarily commented out
+# RUN npm install -g log.io --user "p3"
+# RUN echo "exports.config = {host:'0.0.0.0',port:8388}" > .log.io/web_server.conf
+# ADD harvester.conf /home/p3/.log.io/harvester.conf
 
 # Setup & run startup-script
 ADD startup.sh /usr/local/bin/startup.sh
