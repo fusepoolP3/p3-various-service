@@ -33,7 +33,9 @@ RUN cd /usr/local/lib/ && \
     curl -Ls $(curl -s https://api.github.com/repos/fusepoolP3/p3-literal-extraction-transformer/releases | grep browser_download_url | head -n 1 | cut -d '"' -f 4) > p3-literal-extraction-transformer.jar && \
     curl -Ls $(curl -s https://api.github.com/repos/fusepoolP3/p3-literal-extraction-factory-gui/releases | grep browser_download_url | head -n 1 | cut -d '"' -f 4) > p3-literal-extraction-factory-gui.jar && \
     curl -Ls $(curl -s https://api.github.com/repos/fusepoolP3/p3-geocoordinates-transformer/releases | grep browser_download_url | head -n 1 | cut -d '"' -f 4) > p3-geocoordinates-transformer.jar && \
-    curl -Ls $(curl -s https://api.github.com/repos/fusepoolP3/p3-dashboard/releases | grep browser_download_url | head -n 1 | cut -d '"' -f 4) > p3-dashboard.jar && \
+    curl -Ls $(curl -s https://api.github.com/repos/fusepoolP3/p3-bing-translate-transformer/releases | grep browser_download_url | head -n 1 | cut -d '"' -f 4) > p3-bing-translate-transformer.jar && \
+	curl -Ls $(curl -s https://api.github.com/repos/fusepoolP3/p3-bing-translate-factory-gui/releases | grep browser_download_url | head -n 1 | cut -d '"' -f 4) > p3-bing-translate-factory-gui.jar && \
+	curl -Ls $(curl -s https://api.github.com/repos/fusepoolP3/p3-dashboard/releases | grep browser_download_url | head -n 1 | cut -d '"' -f 4) > p3-dashboard.jar && \
     curl -Ls $(curl -s https://api.github.com/repos/fusepoolP3/p3-pipeline-gui/releases | grep browser_download_url | head -n 1 | cut -d '"' -f 4) > p3-pipeline-gui.jar && \
     curl -Ls $(curl -s https://api.github.com/repos/fusepoolP3/p3-resource-gui/releases | grep browser_download_url | head -n 1 | cut -d '"' -f 4) > p3-resource-gui.jar
 

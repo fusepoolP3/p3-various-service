@@ -32,6 +32,7 @@ su p3 -s /usr/bin/java -- -jar /usr/local/lib/p3-batchrefine-factory-gui.jar -P 
 su p3 -s /usr/bin/java -- -jar /usr/local/lib/p3-xslt-factory-gui.jar > /var/log/xslt-factory-gui.log 2>&1 &                              # Port 8204
 su p3 -s /usr/bin/java -- -jar /usr/local/lib/p3-resource-gui.jar > /var/log/resource-gui.log 2>&1 &                                      # Port 8205
 su p3 -s /usr/bin/java -- -jar /usr/local/lib/p3-literal-extraction-factory-gui.jar > /var/log/literal-extraction-factory-gui.log 2>&1 &  # Port 8206
+su p3 -s /usr/bin/java -- -jar /usr/local/lib/p3-bing-translate-factory-gui.jar > /var/log/bing-translate-factory-gui.log 2>&1 &  		  # Port 8207
 
 # Transformers
 su p3 -s /usr/bin/java -- -jar /usr/local/lib/p3-pipeline-transformer.jar -C > /var/log/pipeline-transformer.log 2>&1 &                   # Port 8300
@@ -42,7 +43,8 @@ su p3 -s /usr/bin/java -- -Xmx4g -jar /usr/local/lib/p3-literal-extraction-trans
 su p3 -s /usr/bin/java -- -jar /usr/local/lib/p3-silkdedup.jar > /var/log/silkdedup.log 2>&1 &                                            # Port 8306
 su p3 -s /usr/bin/java -- -jar /usr/local/lib/p3-xslt-transformer.jar > /var/log/xslt-transformer.log 2>&1 &                              # port 8307
 su p3 -s /usr/bin/java -- -jar /usr/local/lib/p3-geocoordinates-transformer.jar -P 8308 > /var/log/geocoordinates-transformer.log 2>&1 &  # port 8308
-# TODO: p3-osm-transformer, p3-bing-translate-transformer 
+su p3 -s /usr/bin/java -- -jar /usr/local/lib/p3-bing-translate-transformer.jar -P 8309 > /var/log/bing-translate-transformer.log 2>&1 &  # port 8309
+# TODO: p3-osm-transformer
 
 # starts up Elasticsearch - Logstash - Kibana
 #cd /opt/ELK
